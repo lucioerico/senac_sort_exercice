@@ -1,0 +1,61 @@
+import java.util.Scanner;
+class senac {
+  public static void main(String[] args) {
+    Scanner numberElement = new Scanner(System.in);
+    System.out.println("Qual é a quantidade de elementos que serão lidos?");
+    int numberlimit = Math.abs(numberElement.nextInt());
+    int totalElements[] = new int[numberlimit];
+    int totalElementsOriginal[] = new int[numberlimit];
+    for (int i = 0; i < numberlimit; i++) {
+      System.out.println("Qual o elemento de posição " + i + " a ser inserido?");
+      int insertElement = numberElement.nextInt();
+      totalElements[i] = insertElement;
+      totalElementsOriginal[i] = insertElement;
+    }
+    changer(totalElements);
+    wayofvetor(totalElementsOriginal);
+  }
+  private static void changer(int[] totalElements) {
+    for (int l = 0; l < totalElements.length - 1; l++) {
+      corechanger(totalElements);
+      if (totalElements[l] > totalElements[l + 1]) {
+        corechanger(totalElements);
+      } else {
+      }
+    }
+    calculator(totalElements);
+  }
+  private static void corechanger(int[] totalElements) {
+    for (int l = 0; l < totalElements.length - 1; l++) {
+      if (totalElements[l] > totalElements[l + 1]) {
+        int keeprData1 = totalElements[l];
+        int keeprData2 = totalElements[l + 1];
+        totalElements[l + 1] = keeprData1;
+        totalElements[l] = keeprData2;
+      }
+    }
+  }
+  private static void calculator(int[] totalElements) {
+    int maxNumb = totalElements[(totalElements.length - 1)];
+    int minNumb = totalElements[0];
+    int[] subHighLow = new int[1];
+    int calculator = (maxNumb) - (minNumb);
+    subHighLow[0] = calculator;
+    System.out.println("A maior Subtração dos elementos do vetor é " + subHighLow[0]);
+  }
+  private static void wayofvetor(int[] totalElementsOriginal) {
+    boolean finalUpDown[] = new boolean[1];
+    for (int l = 0; l < totalElementsOriginal.length - 1; l++) {
+      if (totalElementsOriginal[l] >= totalElementsOriginal[l + 1]) {
+        boolean updown = false;
+        finalUpDown[0] = updown;
+        break;
+      }
+      if (totalElementsOriginal[l] < totalElementsOriginal[l + 1]) {
+        boolean updown = true;
+        finalUpDown[0] = updown;
+      }
+    }
+    System.out.println("O vetor está em ordem crescente? Resposta: " + finalUpDown[0]);
+  }
+}
